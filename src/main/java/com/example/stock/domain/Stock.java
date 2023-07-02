@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public class Stock  {
     private Long id;
     private Long productId;
     private Long quantity;
+
+    @Version
+    private Long version;
 
     public Stock() {
     }
@@ -29,6 +33,6 @@ public class Stock  {
         if(this.quantity-quantity < 0 ){
             throw new RuntimeException("foo");
         }
-        this.quantity = this.quantity-quantity;
+        this.quantity -= quantity;
     }
 }
